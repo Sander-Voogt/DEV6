@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //TODO: add all routes
 app.use('/', require('./routes/index'));
 app.use('/register', require('./routes/register'));
+app.use('/login', require('./routes/login'));
 //TODO: add all routes
 
 
