@@ -1,5 +1,23 @@
 extends layout
 
 block content
-  h1= title
-  p Welkom bij Mafia.nl
+  .row
+
+  .col-md-7
+    h1 Welkom
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet orci in lacus vulputate, eu tristique velit aliquam. Duis sit amet congue est. Sed aliquet nec justo eget fermentum. Proin vestibulum augue id sem varius, eu ultricies erat egestas. Aenean commodo non quam at cursus. Fusce at felis gravida, maximus leo at, maximus quam. Donec ac varius mi. Proin non justo ligula. Morbi consectetur, lacus ut cursus lacinia, orci dui vehicula felis, eu aliquet lectus ipsum at eros. Donec non massa pharetra, placerat augue eu, fermentum libero. Vestibulum at tempus lacus, a volutpat mi.
+
+  .col-md-5
+    | <h1>Login</h1>
+    | <form>
+    |   <div class="form-group">
+    |     <label for="email">Email</label>
+    |     <input type="email" class="form-control" id="email" placeholder="Email">
+    |   </div>
+    |   <div class="form-group">
+    |     <label for="password">Password</label>
+    |     <input type="password" class="form-control" id="password" placeholder="Password">
+    |   </div>
+    |   <button type="submit" class="btn btn-default">Submit</button>
+    | </form>
+
