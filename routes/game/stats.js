@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    //TODO: show a proper welcome screen with links to login or register
-  res.render('index', { title: 'Express' });
+    //TODO: implement username, return advanced listing of their stats
+    res.render('stats', { user: username, stats: stats });
 });
 
 module.exports = router;

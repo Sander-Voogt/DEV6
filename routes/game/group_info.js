@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+    //TODO: return the group info: name and players
+    res.render('group_info', { name: groupname, players: players });
 });
+
 
 module.exports = router;
