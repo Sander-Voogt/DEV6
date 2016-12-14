@@ -1,0 +1,24 @@
+extends layout
+
+block content
+        h1 Group managegment
+        table(border='1')
+            thead
+                tr
+                    th Id
+                    th Name
+                    th Members
+                    th Money
+
+            each item in items
+                tr
+                    td=item.f_id
+                    td=item.name
+                    td=item.members
+                    td=item.money
+
+        </br>
+        | <form action="/groups" method="post">
+        | Group id: <input type="groupid" name="groupid" placeholder=""></br></br>
+        | <button type="submit" class="btn btn-default">Join group</button>
+        | </form>
