@@ -6,4 +6,9 @@ describe('Array', function() {
             assert.equal(-1, [1,2,3].indexOf(4));
         });
     });
+    describe('TADAM', function(){
+        it('should return Tadam', function(){
+            assert.equal('Tadam', 'Tadam');
+        });
+    });
 });
