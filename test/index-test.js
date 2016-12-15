@@ -8,7 +8,7 @@ describe('Array', function() {
     });
     describe('TADAM', function(){
         it('should return Tadam', function(){
-            assert.equal('Tadam', 'Tadam');
+            assert.equal('Tadam', 'c');
         });
     });
 });
