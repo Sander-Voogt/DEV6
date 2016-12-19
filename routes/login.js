@@ -26,8 +26,6 @@ router.post('/', function(req, res, next) {
                     res.end();
                 } else {
                     res.end("Dit wachtwoord is helaas verkeerd.")
-
-
                 }
 
 

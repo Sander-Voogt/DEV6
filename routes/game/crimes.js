@@ -22,21 +22,36 @@ function doCrime(userchance) {
 
 router.get('/', function(req, res, next) {
     //TODO: return all crimes (and succes rate) for this user
-    mysql.mysqlConnection.query("Select chance From users WHERE id = 10", function (err, rows) {
-        if(err) throw err;
-        res.render('crimes', { crimes: 'tadam', chance: rows});
+    var moment = require('moment');
+    var currentTime = moment().unix();
+
+    mysql.mysqlConnection.query("SELECT p.user FROM prison p, users u WHERE p.user = 10 AND p.time > '"+ currentTime +"'", function (err, rows) {
+
+        if(rows == false){
+            res.render('tadam');
+        } else {
+            mysql.mysqlConnection.query("Select chance From users WHERE id = 10", function (err, rows) {
+                if (err) throw err;
+                res.render('crimes', {crimes: 'tadam', chance: rows});
+            });
+        }
     });
+
 
 });
 
 router.post('/', function(req, res, next) {
     //TODO: handle crime submitted, calculate chance and process the success or failure
+    var moment = require('moment');
+
     var chance = 1;
     var crime = doCrime(chance);
 
-    var time = new Date();
-    var newtime = time.getTime();
-    var newtime = newtime + 90;
+    var currentTime = moment().unix();
+    var newtime = currentTime + 90;
+
+    console.log(currentTime);
+    console.log(newtime);
 
     if(crime > chance){
         res.end("Gelukt");
