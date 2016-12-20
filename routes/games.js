@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    //TODO: return all players available to kill (and success rate with available weapons) for this user
-    res.render('games');
+    var username = req.cookies.username;
+    res.render('games', { username: username });
 });
 
 router.post('/', function(req, res, next) {
-    //TODO: handle the player submitted, calculate chance and process the success or failure
+
 
 });
 
