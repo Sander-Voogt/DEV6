@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var mysql = require('../../database.js');
 
 router.get('/', function(req, res, next) {
-    //TODO: return all weapons with prices
-    res.render('shop', { weapons: weapons });
+    var username = req.cookies.username;
+    mysql.mysqlConnection.query('SELECT * FROM shop', function(err, rows) {
+        res.render('shop', { username: username, weapons: rows });
+    });
 });
 
 router.post('/', function(req, res, next) {
