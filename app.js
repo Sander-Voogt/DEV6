@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 app.use('/register', require('./routes/register'));
 app.use('/login', require('./routes/login'));
-app.use('/groups', require('./routes/game/group_join'));
+app.use('/game/groups', require('./routes/game/group_join'));
 app.use('/logout', require('./routes/logout'));
 app.use('/game/crime', require('./routes/game/crimes'));
 app.use('/game/shop', require('./routes/game/shop'));
