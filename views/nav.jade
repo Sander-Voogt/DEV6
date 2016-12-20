@@ -14,8 +14,13 @@ nav.navbar.navbar-default
 
             ul.nav.navbar-nav.navbar-right
                 if username
-                    li
-                        a Ingelogd als <span class="glyphicon glyphicon-user" aria-hidden="true"></span> #{username}
+                    li.dropdown
+                            a.dropdown-toggle(data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") <span class="glyphicon glyphicon-user" aria-hidden="true"></span> #{username}
+                                    span.caret
+                                        ul.dropdown-menu
+                                            li
+                                                a(href="/logout") Uitloggen
+
                 else
                     li
                         a Niet ingelogd
