@@ -16,4 +16,19 @@ function parseBet(bet) {
     console.log(typeof(bet));
 }
 
-parseBet(bet);
+/**
+ * @return {boolean}
+ */
+function SingleBet(choice) {
+    roll = getNumber();
+    console.log("CPU: " + roll.toString() + "\nUser: " + choice.toString());
+    if (choice !== roll) {
+        console.log("User lost");
+        return false;
+    } else {
+        console.log("User won");
+        return true;
+    }
+}
+
+SingleBet(12);
