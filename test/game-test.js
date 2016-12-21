@@ -51,9 +51,9 @@ describe("Game Test", function() {
             });
         });
 
-        it("Should login", function(){
-            request(url).post("/login").send(pa)
-        })
+        // it("Should login", function(){
+        //     request(url).post("/login").send(pa)
+        // })
     })
 
 });
