@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 Garage
+    table(border='1', width='640')
+        tr
+            th Naam
+            th Maak primair
+        each item in cars
+            tr
+                td=item.car_name
+                td=item.car_value
