@@ -25,15 +25,18 @@ router.get('/', function(req, res, next) {
     var moment = require('moment');
     var currentTime = moment().unix();
 
-    mysql.mysqlConnection.query("SELECT p.user FROM prison p, users u WHERE p.user = 10 AND p.time > '"+ currentTime +"'", function (err, rows) {
+    console.log(currentTime);
+
+    mysql.mysqlConnection.query("SELECT p.user_id, time FROM prison WHERE p.user_id = 10 AND p.time > '"+ currentTime +"'", function (err, rows) {
 
         if(rows == false){
-            res.render('tadam');
-        } else {
             mysql.mysqlConnection.query("Select chance From users WHERE id = 10", function (err, rows) {
                 if (err) throw err;
                 res.render('crimes', {crimes: 'tadam', chance: rows});
             });
+
+        } else {
+            res.render('tadam', {current: currentTime, database: rows});
         }
     });
 
