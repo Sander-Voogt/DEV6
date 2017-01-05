@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    p hoiddd
+    h1 #{crimes}
+    each val in chance
+        h2 #{val.car_chance}% kans
+        |<form action="/game/car" method="post">
+        |<input type="hidden" name="chance" value="#{val.car_chance}">
+        |<input type="submit" value="Jat auto">
+        |</form>

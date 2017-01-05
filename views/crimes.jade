@@ -5,6 +5,7 @@ block content
     h1 #{crimes}
     each val in chance
         h2 #{val.chance}% kans
-    |<form action="/game/crime" method="post">
-    |<input type="submit" value="pleeg misdaad">
-    |</form>
+        |<form action="/game/crime" method="post">
+        |<input type="hidden" name="chance" value="#{val.chance}">
+        |<input type="submit" value="pleeg misdaad">
+        |</form>

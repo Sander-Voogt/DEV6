@@ -9,7 +9,7 @@ function doCrime(userchance) {
     var random = Math.floor(Math.random() * 100 + 1);
 
     if (chance > random){
-        userchance = userchance * 1.08;
+        userchance = userchance * 1.2;
         console.log("Gelukt");
         console.log(chance);
         console.log(random)
@@ -22,6 +22,20 @@ function doCrime(userchance) {
     }
 }
 
+function createModel(){
+
+    var randomBrand = Math.floor((Math.random() * 10) + 1);
+    brand = ['audi A6', 'fiat panda', 'BMW M5', 'Peugot 108', 'Renault Megane', 'TATA', 'Porsche 911', 'Lambogini GT', 'Ford KA', 'Kia picanto', 'Mitsubitsi Spacestar'];
+
+    carName = brand[randomBrand];
+
+    return carName;
+}
+
+function createPrice(){
+    return price = Math.floor((Math.random() * 10000) + 800);
+}
+
 router.get('/', function(req, res, next) {
     //TODO: return all crimes (and succes rate) for this user
     var moment = require('moment');
@@ -31,9 +45,9 @@ router.get('/', function(req, res, next) {
     mysql.mysqlConnection.query("SELECT username, time FROM prison WHERE username = '" + username + "' AND time > '"+ currentTime +"'ORDER BY id DESC LIMIT 1;", function (err, rows) {
 
         if(rows == false){
-            mysql.mysqlConnection.query("Select chance From users WHERE username = '" + username + "'", function (err, rows) {
+            mysql.mysqlConnection.query("Select car_chance From users WHERE username = '" + username + "'", function (err, rows) {
                 if (err) throw err;
-                res.render('crimes', {crimes: 'tadam', chance: rows, username: username});
+                res.render('car', {crimes: 'tadam', chance: rows, username: username});
             });
 
         } else {
@@ -41,7 +55,7 @@ router.get('/', function(req, res, next) {
                 if (err) throw err;
 
                 console.log(rows[0].time);
-                res.render('tadam', {current: currentTime, database: rows[0].time, username: username});
+                res.render('car', {current: currentTime, database: rows[0].time, username: username});
             });
         }
     });
@@ -64,11 +78,15 @@ router.post('/', function(req, res, next) {
     console.log(currentTime);
     console.log(newtime);
 
+    var model = createModel();
+    var price = createPrice();
+
+    console.log(model);
+
     if(crime > chance){
-        mysql.mysqlConnection.query("Update users Set chance='" + crime + "' Where username = '" + username + "'"), function (err,rows){};
-        mysql.mysqlConnection.query('UPDATE users SET users.money=users.money+1000 WHERE username="' + username +'"', function(err, results) {});
-        res.render("gelukt", {username: username});
-        res.end();
+        mysql.mysqlConnection.query("Update users Set car_chance='" + crime + "' Where username = '" + username + "'"), function (err,rows){};
+        mysql.mysqlConnection.query('Insert into garage (username, car_name, car_value) Values ("' + username +'", "' + model + '", "' + price +'")', function(err, results) {});
+        res.end("Gelukt je hebt een auto!");
     } else {
         mysql.mysqlConnection.query("INSERT INTO prison (username, time) VALUES ('" + username + "', '" + newtime + "')", function (err, rows) {
             if(err) throw err;

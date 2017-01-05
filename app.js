@@ -27,8 +27,10 @@ app.use('/login', require('./routes/login'));
 app.use('/game/groups', require('./routes/game/group_join'));
 app.use('/logout', require('./routes/logout'));
 app.use('/game/crime', require('./routes/game/crimes'));
+app.use('/game/car', require('./routes/game/cars'));
 app.use('/game/shop', require('./routes/game/shop'));
 app.use('/games', require('./routes/games'));
+app.use('/garage', require('./routes/garage'));
 //TODO: add all routes
 
 

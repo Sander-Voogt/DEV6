@@ -1,5 +1,8 @@
-p Jammer je zit in de gevangenis
+extends layout
 
-- var time = current - database['time'];
-    p #{time} seconde wachten
-- console.log(time);
+script(src="https://raw.githubusercontent.com/mckamey/countdownjs/master/countdown.js")
+
+block content
+    |<meta http-equiv="refresh" content="1">
+    p Hahahah je zit in de gevangenis
+    h2 #{database - current} seconde wachten
