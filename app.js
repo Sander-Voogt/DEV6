@@ -28,7 +28,9 @@ app.use('/game/groups', require('./routes/game/group_join'));
 app.use('/logout', require('./routes/logout'));
 app.use('/game/crime', require('./routes/game/crimes'));
 app.use('/game/shop', require('./routes/game/shop'));
+app.use('/game/roulette', require('./routes/game/roulette'));
 app.use('/games', require('./routes/games'));
+
 //TODO: add all routes
 
 
