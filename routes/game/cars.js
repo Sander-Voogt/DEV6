@@ -2,26 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('../../database.js');
 
-
-
-function doCrime(userchance) {
-    var chance = userchance;
-    var random = Math.floor(Math.random() * 100 + 1);
-
-    if (chance > random){
-        userchance = userchance * 1.2;
-        console.log("Gelukt");
-        console.log(chance);
-        console.log(random)
-        return userchance;
-    } else {
-        console.log(chance);
-        console.log(random);
-
-        console.log("In de gevangenis");
-    }
-}
-
 function createModel(){
 
     var randomBrand = Math.floor((Math.random() * 10) + 1);
@@ -70,7 +50,7 @@ router.post('/', function(req, res, next) {
 
 
     var chance = req.body.chance;
-    var crime = doCrime(chance);
+    var crime = module.exports.doCrime(chance);
 
     var currentTime = moment().unix();
     var newtime = currentTime + 90;
@@ -97,3 +77,25 @@ router.post('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+module.exports = router;
+
+module.exports.doCrime = function(userchance){
+    var chance = userchance;
+    var random = Math.floor(Math.random() * 100 + 1);
+
+    if (chance > random){
+
+        userchance = userchance * 1.08;
+        console.log("Gelukt");
+        console.log(chance);
+        console.log(random)
+        return userchance;
+    } else {
+        console.log(chance);
+        console.log(random);
+
+        console.log("In de gevangenis");
+        return userchance;
+    }
+}

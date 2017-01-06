@@ -24,8 +24,10 @@ describe('Tests Sander: misdaden en auto stelen', function () {
             });
     });
 
-    describe("Test misdaden", function(){
+    describe("Testen misdaad speler", function() {
+
         it("pleeg misdaad", function(done){
+
             agent
                 .post('/game/crime')
                 .type('form')
@@ -40,6 +42,21 @@ describe('Tests Sander: misdaden en auto stelen', function () {
                     return
                 })
         });
+
+        it('Misdaad correct', function(done) {
+            var file = require("../routes/game/crimes");
+            var test1  = file.doCrime(100);
+            expect(test1).to.equal(108, done());
+        });
+
+        it('Misdaad fout', function(done) {
+            var file = require("../routes/game/crimes");
+            var test1  = file.doCrime(0);
+            expect(test1).to.equal(0, done());
+        });
+    });
+
+    describe("Testen auto stelen speler", function() {
 
         it("steel auto", function(done){
             agent
@@ -70,18 +87,15 @@ describe('Tests Sander: misdaden en auto stelen', function () {
                     return
                 });
         });
-    });
 
-    describe("Testen misdaad speler", function() {
-
-        it('Misdaad correct', function(done) {
-            var file = require("../routes/game/crimes");
+        it('Auto stelen correct', function(done) {
+            var file = require("../routes/game/cars");
             var test1  = file.doCrime(100);
             expect(test1).to.equal(108, done());
         });
 
-        it('Misdaad fout', function(done) {
-            var file = require("../routes/game/crimes");
+        it('Auto stelen fout', function(done) {
+            var file = require("../routes/game/cars");
             var test1  = file.doCrime(0);
             expect(test1).to.equal(0, done());
         });
