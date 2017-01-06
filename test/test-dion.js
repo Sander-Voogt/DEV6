@@ -20,8 +20,8 @@ describe('Tests Dion: winkel en inventaris', function () {
             agent
                 .post('/login')
                 .type('form')
-                .send({username: 'Dion'})
-                .send({password: 'hoi'})
+                .send({username: 'TestDion'})
+                .send({password: '123'})
                 .expect(302)
                 .expect('Location', '/')
                 .expect('set-cookie', /username/)
