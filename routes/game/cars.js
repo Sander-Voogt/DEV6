@@ -94,7 +94,6 @@ router.post('/', function(req, res, next) {
         res.redirect("/game/crime");
         res.end();
     }
-    res.render('index', { title: "Express"});
 });
 
 module.exports = router;
