@@ -66,6 +66,7 @@ module.exports.doCrime = function(userchance){
     var random = Math.floor(Math.random() * 100 + 1);
 
     if (chance > random){
+
         userchance = userchance * 1.08;
         console.log("Gelukt");
         console.log(chance);
