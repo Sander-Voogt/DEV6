@@ -1,18 +1,24 @@
 extends layout
 
 block content
-    h1 Winkel
-    p Beschikbare wapens:
-    table(border='1', width='300')
+    h1 Wapenwinkel
+
+    each dollar in money
+        p
+            b <font color="green">Jouw geld: $#{dollar.money}</font>
+
+
+    table(border='1', width='620')
         tr
+            th Foto
             th Naam
             th Prijs
             th Aantal
             th Kopen
         each item in weapons
             tr
+                td <img src="/images/#{item.name}.png" />
                 td=item.name
                 td $#{item.price}
                 td=item.amount
                 td
-                    a Kopen (ID #{item.id})
