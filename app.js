@@ -30,6 +30,7 @@ app.use('/game/crime', require('./routes/game/crimes'));
 app.use('/game/car', require('./routes/game/cars'));
 app.use('/game/roulette', require('./routes/game/roulette'));
 app.use('/game/shop', require('./routes/game/shop'));
+app.use('/game/inventory', require('./routes/game/inventory'));
 app.use('/games', require('./routes/games'));
 app.use('/garage', require('./routes/garage'));
 //TODO: add all routes

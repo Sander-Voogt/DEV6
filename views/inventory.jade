@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 Inventaris
+    p
+    each dollar in money
+            b <font color="green">Jouw geld: $#{dollar.money}</font>
+    p
+        each selected in primair
+            b <font color="green">Geselecteerd wapen: #{selected.weapon}</font>
+    table(border='1', width='640')
+        tr
+            th Foto
+            th Naam
+            th Maak primair
+            th Verkopen
+        each item in weapons
+            tr
+                td <img src="/images/#{item.weapon}.png" />
+                td=item.weapon
+                td <a href="/game/inventory/#{item.id}">Activeer</a>
+                td
