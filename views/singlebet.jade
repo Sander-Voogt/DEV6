@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1 Single Bet Roulette
+    <form action="/game/roulette/singlebet" method="post">
+    p Getal:<br><input type="number" name="getal" placeholder=""><br>
+    p Inzet:<br><input type="number" name="amount" placeholder=""><br>
+    <button type="submit" class="btn btn-default">Gok</button>
+    </form>

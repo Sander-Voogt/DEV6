@@ -31,6 +31,7 @@ app.use('/logout', require('./routes/logout'));
 app.use('/game/crime', require('./routes/game/crimes'));
 app.use('/game/car', require('./routes/game/cars'));
 app.use('/game/roulette', require('./routes/game/roulette'));
+app.use('/game/roulette/singlebet', require('./routes/game/singlebet'));
 app.use('/game/shop', require('./routes/game/shop'));
 app.use('/game/inventory', require('./routes/game/inventory'));
 app.use('/games', require('./routes/games'));
