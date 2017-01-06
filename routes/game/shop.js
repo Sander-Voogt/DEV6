@@ -21,7 +21,7 @@ router.get('/:weapon', function(req, res, next) {
         var weaponcost = (result[0].price);
         var weaponamount = (result[0].amount);
 
-        if((playermoney >= weaponcost) && (weaponamount > 0)){
+        if(module.exports.checkPurchase(playermoney, weaponcost, weaponamount) == 1){
 
             var doquery1 = 'INSERT INTO inventory (username, weapon, worth) VALUES ("' + username + '", "' + weapon + '", "' + (weaponcost / 2) + '")';
             var doquery2 = 'UPDATE shop SET amount="' + (weaponamount - 1) + '" WHERE name="' + weapon + '"';
@@ -42,4 +42,18 @@ router.get('/:weapon', function(req, res, next) {
 
 });
 
+
 module.exports = router;
+
+module.exports.checkPurchase = function(money, cost, amount) {
+    var money = money;
+    var cost = cost;
+    var amount = amount;
+
+    if(money >= cost && amount > 0){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
