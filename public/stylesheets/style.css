@@ -19,6 +19,11 @@ table, th, td, tr{
 }
 
 .groupnameform{
+    margin: 10px;
+    float: left;
+  }
+
+.groupexitform{
   margin: 10px;
   float: left;
 }
