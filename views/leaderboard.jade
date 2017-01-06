@@ -1,0 +1,10 @@
+extends layout
+
+block content
+
+h1 leaderboard
+
+ol Leaderboard
+    each item in data
+        li=item.username
+        li=item.money
