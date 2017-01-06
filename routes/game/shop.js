@@ -11,4 +11,35 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/:weapon', function(req, res, next) {
+    var username = req.cookies.username;
+    var weapon = req.params.weapon;
+    var query = 'SELECT u.money, s.price, s.amount FROM users u, shop s WHERE u.username="' + username + '" AND s.name="' + weapon + '"';
+
+    mysql.mysqlConnection.query(query, function(err, result) {
+        var playermoney = (result[0].money);
+        var weaponcost = (result[0].price);
+        var weaponamount = (result[0].amount);
+
+        if((playermoney >= weaponcost) && (weaponamount > 0)){
+
+            var doquery1 = 'INSERT INTO inventory (username, weapon, worth) VALUES ("' + username + '", "' + weapon + '", "' + (weaponcost / 2) + '")';
+            var doquery2 = 'UPDATE shop SET amount="' + (weaponamount - 1) + '" WHERE name="' + weapon + '"';
+            var doquery3 = 'UPDATE users SET money="' + (playermoney - weaponcost) + '" WHERE username="' + username + '"';
+
+                mysql.mysqlConnection.query(doquery1, function (err, results) {});
+                mysql.mysqlConnection.query(doquery2, function (err, results) {});
+                mysql.mysqlConnection.query(doquery3, function (err, results) {});
+
+                res.redirect('/game/inventory/');
+                res.end();
+
+        }else{
+            res.end("Je hebt niet genoeg geld om dit wapen te kopen of dit wapen is uitverkocht.")
+        }
+
+    });
+
+});
+
 module.exports = router;
