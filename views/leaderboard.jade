@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 Leaderboard
+    table(border='1', width='620')
+        tr
+            th Naam
+            th Geld
+        each item in data
+            tr
+                td=item.username
+                td=item.money
