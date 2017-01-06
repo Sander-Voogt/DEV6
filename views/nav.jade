@@ -14,6 +14,10 @@ nav.navbar.navbar-default
 
             ul.nav.navbar-nav.navbar-right
                 if username
+                    li
+                        a(href="/game/inventory/") Inventaris
+                    li
+                        a(href="/game/shop/") Wapenwinkel
                     li.dropdown
                             a.dropdown-toggle(data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") <span class="glyphicon glyphicon-user" aria-hidden="true"></span> #{username}
                                     span.caret
