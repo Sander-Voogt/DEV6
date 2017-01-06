@@ -86,7 +86,8 @@ router.post('/', function(req, res, next) {
     if(crime > chance){
         mysql.mysqlConnection.query("Update users Set car_chance='" + crime + "' Where username = '" + username + "'"), function (err,rows){};
         mysql.mysqlConnection.query('Insert into garage (username, car_name, car_value) Values ("' + username +'", "' + model + '", "' + price +'")', function(err, results) {});
-        res.end("Gelukt je hebt een auto!");
+        res.render("gelukt", {username: username, crime: "Je hebt een auto gejat"});
+        res.end();
     } else {
         mysql.mysqlConnection.query("INSERT INTO prison (username, time) VALUES ('" + username + "', '" + newtime + "')", function (err, rows) {
             if(err) throw err;

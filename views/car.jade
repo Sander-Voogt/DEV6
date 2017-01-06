@@ -1,11 +1,11 @@
 extends layout
 
 block content
-    p hoiddd
-    h1 #{crimes}
+    h1 Auto stelen
+    p Lukt het jou om een mooie auto te stelen.
     each val in chance
         h2 #{val.car_chance}% kans
         |<form action="/game/car" method="post">
         |<input type="hidden" name="chance" value="#{val.car_chance}">
-        |<input type="submit" value="Jat auto">
+        |<input type="submit" class="btn btn-primary" value="Jat auto">
         |</form>

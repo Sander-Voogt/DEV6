@@ -3,25 +3,6 @@ var router = express.Router();
 var mysql = require('../../database.js');
 
 
-
-function doCrime(userchance) {
-    var chance = userchance;
-    var random = Math.floor(Math.random() * 100 + 1);
-
-    if (chance > random){
-        userchance = userchance * 1.08;
-        console.log("Gelukt");
-        console.log(chance);
-        console.log(random)
-        return userchance;
-    } else {
-        console.log(chance);
-        console.log(random);
-
-        console.log("In de gevangenis");
-    }
-}
-
 router.get('/', function(req, res, next) {
     //TODO: return all crimes (and succes rate) for this user
     var moment = require('moment');
@@ -56,7 +37,7 @@ router.post('/', function(req, res, next) {
 
 
     var chance = req.body.chance;
-    var crime = doCrime(chance);
+    var crime = module.exports.doCrime(chance);
 
     var currentTime = moment().unix();
     var newtime = currentTime + 90;
@@ -67,7 +48,7 @@ router.post('/', function(req, res, next) {
     if(crime > chance){
         mysql.mysqlConnection.query("Update users Set chance='" + crime + "' Where username = '" + username + "'"), function (err,rows){};
         mysql.mysqlConnection.query('UPDATE users SET users.money=users.money+1000 WHERE username="' + username +'"', function(err, results) {});
-        res.render("gelukt", {username: username});
+        res.render("gelukt", {username: username, crime: "Je hebt 1000 euro verdient"});
         res.end();
     } else {
         mysql.mysqlConnection.query("INSERT INTO prison (username, time) VALUES ('" + username + "', '" + newtime + "')", function (err, rows) {
@@ -80,3 +61,22 @@ router.post('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+module.exports.doCrime = function(userchance){
+    var chance = userchance;
+    var random = Math.floor(Math.random() * 100 + 1);
+
+    if (chance > random){
+        userchance = userchance * 1.08;
+        console.log("Gelukt");
+        console.log(chance);
+        console.log(random)
+        return userchance;
+    } else {
+        console.log(chance);
+        console.log(random);
+
+        console.log("In de gevangenis");
+        return userchance;
+    }
+}

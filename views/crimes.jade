@@ -1,11 +1,11 @@
 extends layout
 
 block content
-    p hoiddd
-    h1 #{crimes}
+    h1 Misdaad Plegen
+    p Hier is het mogeliijk om misdaden te plegen, druk op de knop misdaad plegen.
     each val in chance
         h2 #{val.chance}% kans
         |<form action="/game/crime" method="post">
         |<input type="hidden" name="chance" value="#{val.chance}">
-        |<input type="submit" value="pleeg misdaad">
+        |<input type="submit" class="btn btn-primary value="pleeg misdaad">
         |</form>

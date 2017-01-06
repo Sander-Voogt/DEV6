@@ -2,10 +2,11 @@ extends layout
 
 block content
     h1 Garage
+    p Hier staan al je mooie auto's
     table(border='1', width='640')
         tr
             th Naam
-            th Maak primair
+            th Waarde
         each item in cars
             tr
                 td=item.car_name
