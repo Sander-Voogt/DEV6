@@ -66,17 +66,18 @@ module.exports.doCrime = function(userchance){
     var random = Math.floor(Math.random() * 100 + 1);
 
     if (chance > random){
-
-        userchance = userchance * 1.08;
+        if(chance < 90){
+            chance = chance * 1.08;
+        } else if(chance < 50){
+            chance = chance * 1.05;
+        }else if(chance < 20){
+            chance = chance * 1.1;
+        }
+        chance = chance * 1.000001
         console.log("Gelukt");
-        console.log(chance);
-        console.log(random)
-        return userchance;
+        return chance;
     } else {
-        console.log(chance);
-        console.log(random);
-
         console.log("In de gevangenis");
-        return userchance;
+        return chance;
     }
 }

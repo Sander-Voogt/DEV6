@@ -46,7 +46,13 @@ describe('Tests Sander: misdaden en auto stelen', function () {
         it('Misdaad correct', function(done) {
             var file = require("../routes/game/crimes");
             var test1  = file.doCrime(100);
-            expect(test1).to.equal(108, done());
+            expect(test1).to.equal(100.00009999999999, done());
+        });
+
+        it('kans gaat minder niet hoger dan 90%', function (done){
+            var file = require("../routes/game/crimes");
+            var test1  = file.doCrime(90);
+            expect(test1).to.equal(90.00008999999999, done());
         });
 
         it('Misdaad fout', function(done) {
@@ -88,10 +94,16 @@ describe('Tests Sander: misdaden en auto stelen', function () {
                 });
         });
 
+        it('kans gaat minder niet hoger dan 90%', function (done){
+            var file = require("../routes/game/cars");
+            var test1  = file.doCrime(90);
+            expect(test1).to.equal(90.00000000009001, done());
+        });
+
         it('Auto stelen correct', function(done) {
             var file = require("../routes/game/cars");
             var test1  = file.doCrime(100);
-            expect(test1).to.equal(108, done());
+            expect(test1).to.equal(100.00000000010002, done());
         });
 
         it('Auto stelen fout', function(done) {
