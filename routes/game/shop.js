@@ -56,4 +56,4 @@ module.exports.checkPurchase = function(money, cost, amount) {
     else {
         return 0;
     }
-}
+};

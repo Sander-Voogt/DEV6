@@ -23,7 +23,6 @@ router.post('/', function(req, res, next) {
                     else {
                         mysql.mysqlConnection.query('SELECT members FROM family WHERE f_id = "' + req.body.groupid + '"', function (err, results) {
                             var members = (results[0].members);
-                            console.log("members seledted" + members);
                             mysql.mysqlConnection.query('UPDATE users SET f_id = ? WHERE username = ?', [req.body.groupid, user], function (err, results) {
                             });
                             mysql.mysqlConnection.query('UPDATE family SET members = ? WHERE f_id = ?', [members + 1, req.body.groupid], function () {
@@ -58,6 +57,23 @@ router.post('/', function(req, res, next) {
                         }
                     });
                 }
+            }
+        });
+    }
+
+    if(req.body.group == "groupexit"){
+        mysql.mysqlConnection.query('SELECT f_id FROM users WHERE username="' + user + '"', function (err, results){
+            var f_id = results[0].f_id;
+            if (f_id != 0){
+                mysql.mysqlConnection.query('UPDATE users SET f_id = ? WHERE username = ?', [0, user], function (err, results) {
+            });
+                mysql.mysqlConnection.query('SELECT members FROM family where f_id="' + f_id + '"', function (err, results) {
+                    var members = results[0].members;
+                    console.log(members);
+                    if (members == 1){
+                        mysql.mysqlConnection.query('DELETE FROM family WHERE f_id="' + f_id + '"', function(err, results) {});
+                    }
+                });
             }
         });
     }

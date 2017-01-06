@@ -14,6 +14,17 @@ nav.navbar.navbar-default
 
             ul.nav.navbar-nav.navbar-right
                 if username
+                    li.dropdown
+                        a.dropdown-toggle(data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") Misdaden
+                            span.caret
+                                ul.dropdown-menu
+                                    li
+                                        a(href="/game/crime") Misdaad
+                                    li
+                                        a(href="/game/car") Auto stelen
+                    li
+                        a(href="/garage") Garage
+
                     li
                         a(href="/game/inventory/") Inventaris
                     li
