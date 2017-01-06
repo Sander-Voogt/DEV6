@@ -1,8 +1,10 @@
 extends layout
 
 block content
-        h1 Group managegment
-        table(border='1')
+    h1 Group management
+    h3 Groups
+    div.table
+         table
             thead
                 tr
                     th Id
@@ -17,8 +19,17 @@ block content
                     td=item.members
                     td=item.money
 
-        </br>
-        | <form action="/groups" method="post">
+    div.groupidform
+        | <form action="/game/groupjoin" method="post">
+        |<label><h4>Join a group</h4></label></br>
         | Group id: <input type="groupid" name="groupid" placeholder=""></br></br>
-        | <button type="submit" class="btn btn-default">Join group</button>
-        | </form>
+        | <button type="submit" name="group" value="groupid" class="btn btn-default">Join group</button>
+        |</form>
+
+    div.groupnameform
+        | <form action="/game/groupjoin" method="post">
+        |<label><h4>Start a group</h4></label></br>
+        |Groupname: <input type="groupname" name="groupname" placeholder=""></br></br>
+        |<button type="submit" name="group" value="groupname" class="btn btn-default">Start group</button>
+        |</form>
+

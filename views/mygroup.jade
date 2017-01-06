@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    h1 My Group
+    h3 Group members
+    form(method='post', action='/game/groupinfo')
+        div.table
+            table
+                thead
+                    tr
+                        th Username
+                        th Select
+                each item in items
+                    tr
+                        td=item.username
+                        td
+                            input(type="checkbox" name="checkbox" class="checkbox" value=item.username)
+        input(type='submit', name="cbutton" value='startcrime', class="btn btn-default")

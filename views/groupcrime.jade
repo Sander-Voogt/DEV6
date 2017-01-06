@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    h1 Group Crime
+    h3 Crime
+    | <form action="/game/groupinfo" method="post">
+    | <label><h4>Select Crime</h4></label></br>
+    | <div class="radio">
+    | <label><input type="radio" name="optradio">Car theft</label>
+    | </div>
+    | <div class="radio">
+    | <label><input type="radio" name="optradio">Bank robbery</label>
+    | </div>
+    | <div class="radio disabled">
+    | <label><input type="radio" name="optradio">Store theft</label>
+    | </div>
+    | <button type="submit" name="cbutton" value="docrime" class="btn btn-default">Do Crime</button>
+    | </form>

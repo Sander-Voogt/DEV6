@@ -6,3 +6,20 @@ body {
 a {
   color: #00B7FF;
 }
+
+table, th, td, tr{
+  padding: 5px;
+  border: 1px solid black;
+  font-size: 20px;
+}
+
+.groupidform{
+  margin: 10px;
+  float: left;
+}
+
+.groupnameform{
+  margin: 10px;
+  float: left;
+}
+
