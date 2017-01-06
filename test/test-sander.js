@@ -55,6 +55,20 @@ describe('Tests Sander: misdaden en auto stelen', function () {
                     return
                 })
         });
+
+        it("garage controleren of auto in garage staat", function (done){
+            agent
+                .get('/garage')
+                .expect(200)
+                .then(function (res) {
+                    expect(res.text).to.contains("<td>");
+                    return done();
+                })
+                .catch(function (err) {
+                    console.log(err.response.text);
+                    return
+                });
+        });
     });
 
     describe("Testen misdaad speler", function() {
