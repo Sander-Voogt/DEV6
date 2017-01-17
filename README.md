@@ -3,4 +3,4 @@
 
 Versie 1.0
 
-Gemaakt door: Andre, Dion, Zino, Samuel & Sander
+Gemaakt door: Andre, Dion, Zino, Samuel & Sander.
