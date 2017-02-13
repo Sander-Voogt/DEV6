@@ -22,13 +22,13 @@ router.post('/', function(req, res, next) {
                     }
                     else {
                         mysql.mysqlConnection.query('SELECT members FROM family WHERE f_id = "' + req.body.groupid + '"', function (err, results) {
-                            var members = (results[0].members);
-                            mysql.mysqlConnection.query('UPDATE users SET f_id = ? WHERE username = ?', [req.body.groupid, user], function (err, results) {
-                            });
-                            mysql.mysqlConnection.query('UPDATE family SET members = ? WHERE f_id = ?', [members + 1, req.body.groupid], function () {
-                            });
+                        var members = (results[0].members);
+                        mysql.mysqlConnection.query('UPDATE users SET f_id = ? WHERE username = ?', [req.body.groupid, user], function (err, results) {
                         });
-                    }
+                        mysql.mysqlConnection.query('UPDATE family SET members = ? WHERE f_id = ?', [members + 1, req.body.groupid], function () {
+                        });
+                    });
+                }
                 });
             }
             else {
@@ -72,6 +72,12 @@ router.post('/', function(req, res, next) {
                     console.log(members);
                     if (members == 1){
                         mysql.mysqlConnection.query('DELETE FROM family WHERE f_id="' + f_id + '"', function(err, results) {});
+                    }
+                    else{
+                        var newmembers = members -1;
+                        mysql.mysqlConnection.query('UPDATE family SET members = ? WHERE f_id = ?', [newmembers, f_id], function (err, results) {
+                        });
+
                     }
                 });
             }
