@@ -5,7 +5,15 @@ var mysql = require('../../database.js');
 
 router.get('/', function (req, res) {
     mysql.mysqlConnection.query('SELECT f_id, name, members, money FROM family', function(err, rows){
+        var array = [];
         var username = req.cookies.username;
+        for (var i of rows)
+            {
+                var newgroup;
+                newgroup = new Group(i.f_id, i.name, i.members, i.money);
+            }
+            array.push(newgroup);
+        console.log(array);
         res.render('groups', {items: rows, username: username});
     });
 });
