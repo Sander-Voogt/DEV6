@@ -21,9 +21,17 @@ router.post('/', function(req, res, next) {
             mysql.mysqlConnection.query('SELECT password FROM users WHERE username="' + req.body.username + '"', function (err, passwordtest) {
                 var passwordtest = JSON.stringify(passwordtest);
                 if (passwordtest == "[{"+'"'+"password"+'"'+":"+'"'+req.body.password+'"'+"}]"){
-                    res.cookie('username', req.body.username, { maxAge: 3600000 });
-                    res.redirect('/');
-                    res.end();
+
+                    //Handle data object in cookie
+                    mysql.mysqlConnection.query('SELECT u.id, u.username, u.money FROM users AS u WHERE username="' + req.body.username + '"', function (err, results) {
+                        console.log(results);
+                        res.cookie('data', results, { maxAge: 3600000 });
+
+                        res.cookie('username', req.body.username, { maxAge: 3600000 });
+                        res.redirect('/');
+                        res.end();
+                    });
+
                 } else {
                     res.end("Dit wachtwoord is helaas verkeerd.")
                 }
