@@ -2,19 +2,25 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('../../database.js');
 
+// DIT IS DE VERWIJZING NAAR CLASS
+const Group = require('../group.js');
 
 router.get('/', function (req, res) {
     mysql.mysqlConnection.query('SELECT f_id, name, members, money FROM family', function(err, rows){
         var array = [];
         var username = req.cookies.username;
-        for (var i of rows)
-            {
-                var newgroup;
+
+        // DIT IS DE INSTANTIE VAN HET OBJECT
+        let newgroup;
+        console.log(rows);
+        // ARRAY MET OBJECTEN
+        for (var i of rows)  {
                 newgroup = new Group(i.f_id, i.name, i.members, i.money);
-            }
-            array.push(newgroup);
-        console.log(array);
-        res.render('groups', {items: rows, username: username});
+                array.push(newgroup);
+            };
+
+        //ARRAY RENDEREN
+        res.render('groups', {items: array, username: username});
     });
 });
 

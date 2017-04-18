@@ -1,30 +1,30 @@
 /**
  * Created by andre on 16-3-2017.
  */
-class Group{
-    constructor(){
+
+// CLASS GROUP
+
+function Group(f_id, name, members, money){
         this.f_id = f_id;
         this.name = name;
         this.members = members;
         this.money = money;
     }
 
-    get F_id(){
-        return this.f_id;
-    }
+    Group.prototype.getf_id = function () {
+    return this.f_id;
+    };
 
-    get Name(){
+    Group.prototype.getname = function () {
         return this.name;
-    }
+    };
 
-    get Members(){
+    Group.prototype.getmembers = function () {
         return this.members;
-    }
+    };
 
-    get Money(){
+    Group.prototype.getmoney = function () {
         return this.money;
-    }
-}
+    };
 
-// var group = new Group(1, 'newgroup", 3, 1000)
-// group.money(); -> return 1000
+module.exports = Group;
