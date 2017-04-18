@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('../database.js');
 
+const User = require('../routes/user.js');
+
 router.get('/', function(req, res, next) {
     res.render('login');
 });
@@ -24,10 +26,17 @@ router.post('/', function(req, res, next) {
 
                     //Handle data object in cookie
                     mysql.mysqlConnection.query('SELECT u.id, u.username, u.money FROM users AS u WHERE username="' + req.body.username + '"', function (err, results) {
-                        console.log(results);
-                        res.cookie('data', results, { maxAge: 3600000 });
 
+                        //'legacy' code
                         res.cookie('username', req.body.username, { maxAge: 3600000 });
+
+                        //object code
+                        let newuser;
+                        for (var u of results) {
+                            newuser = new User(u.id, u.username, u.money);
+                            res.cookie('data', newuser, { maxAge: 3600000 });
+                        }
+
                         res.redirect('/');
                         res.end();
                     });

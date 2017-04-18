@@ -5,11 +5,14 @@ block content
 
   .col-md-7
     h1 Welkom
-    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet orci in lacus vulputate, eu tristique velit aliquam. Duis sit amet congue est. Sed aliquet nec justo eget fermentum. Proin vestibulum augue id sem varius, eu ultricies erat egestas. Aenean commodo non quam at cursus. Fusce at felis gravida, maximus leo at, maximus quam. Donec ac varius mi. Proin non justo ligula. Morbi consectetur, lacus ut cursus lacinia, orci dui vehicula felis, eu aliquet lectus ipsum at eros. Donec non massa pharetra, placerat augue eu, fermentum libero. Vestibulum at tempus lacus, a volutpat mi.
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce accumsan massa sed eros scelerisque tincidunt. Sed rutrum, urna eu pharetra dignissim, dolor elit euismod neque, a consectetur leo odio nec mi. Donec facilisis lectus odio. Quisque dapibus rutrum sem sit amet pellentesque. Nam vestibulum orci odio, ut ullamcorper augue convallis sit amet. Proin sed orci et ligula placerat viverra sagittis in risus. Fusce dapibus id ex vel molestie. Proin vel sem tortor. Donec egestas, felis pharetra suscipit porttitor, libero tellus imperdiet purus, at aliquet est leo vitae dui. Praesent ultricies quam ut mattis posuere. Sed sapien dui, faucibus ac laoreet ut, malesuada vel nunc. Vivamus at suscipit velit. Vivamus ut elit leo. Donec eu sem vel diam gravida maximus sit amet quis diam. In facilisis est ut tellus aliquam pretium. Nulla eu maximus sapien.
 
   if username
       h1 Ingelogd als #{username}
       p Klik in de menubalk op een game
+      b Jouw data:
+      each item in data
+          p ID: #{item.id}<br> Username: #{item.name}<br> Money: #{item.money}
       p <a href="/logout"><b> Uitloggen >> </b></a>
   else
       .col-md-5
