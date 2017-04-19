@@ -9,6 +9,21 @@ describe('Tests Zino: Roulette en Leaderboard', function () {
 
         it('inloggen en cookie registeren', function(done) {
             agent
+                .post('/login')
+                .type('form')
+                .send({username: 'Dion'})
+                .send({password: 'hoi'})
+                .expect(302)
+                .expect('Location', '/')
+                .expect('set-cookie', /username/)
+                .end(function(err, res) {
+                    agent.jar.setCookie(res.headers['set-cookie'][0]);
+                    console.log("\nCookies: " + res.headers['set-cookie'] + "\n");
+                    return done();
+                });
+
+        it('gokken', function(done) {
+            agent
                 .post('/game/roulette')
                 .type('form')
                 .send({select: 'odd'})
