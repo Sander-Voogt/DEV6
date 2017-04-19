@@ -3,18 +3,21 @@
  */
 
 var app = require('../app.js');
+var expect  = require("chai").expect;
+
+const Group = require('../routes/group.js');
 
 describe("Test object Group", function() {
-    it('Create an instance without values', function() {
+    let group = new Group(1, 'mygroup', 3, 1000);
 
-    });
     it('Create an instance with values', function() {
-
+        group.f_id.should.equal(1);
     });
     it('set()', function() {
-
+        group.members = 1;
+        group.members.should.equal(1);
     });
-        it('get()', function() {
+    it('get()', function() {
 
     });
 });
