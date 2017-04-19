@@ -1,7 +1,11 @@
+"use strict";
+
 const Group = require('../routes/group.js');
 
 describe("Test Group Object", function() {
     let group = new Group(1, 'mygroup', 3, 1000);
+    var app;
+    var expect;
 
     beforeEach(function () {
         app = require('../app.js');
