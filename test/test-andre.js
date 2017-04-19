@@ -32,7 +32,7 @@ describe("Testen met database", function() {
             })
             .catch(function (err) {
                 console.log(err.response.text);
-                return
+                return done();
             });
     });
 
@@ -46,7 +46,7 @@ describe("Testen met database", function() {
              })
             .catch(function (err) {
                 console.log(err.response.text);
-                return
+                return done();
             });
     });
 
