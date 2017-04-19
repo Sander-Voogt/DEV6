@@ -1,23 +1,46 @@
-/**
- * Created by andre on 18-4-2017.
- */
-
-var app = require('../app.js');
-var expect  = require("chai").expect;
-
 const Group = require('../routes/group.js');
 
-describe("Test object Group", function() {
+describe("Test Group Object", function() {
     let group = new Group(1, 'mygroup', 3, 1000);
 
-    it('Create an instance with values', function() {
-        group.f_id.should.equal(1);
+    beforeEach(function () {
+        app = require('../app.js');
+        expect  = require("chai").expect;
     });
-    it('set()', function() {
-        group.members = 1;
-        group.members.should.equal(1);
-    });
-    it('get()', function() {
 
+    it('getF_id()', function() {
+        expect(group.f_id).to.equal(1);
+    });
+
+    it('getName()', function() {
+        expect(group.name).to.equal('mygroup');
+    });
+
+    it('getMembers()', function() {
+        expect(group.members).to.equal(3);
+    });
+
+    it('getMoney()', function() {
+        expect(group.money).to.equal(1000);
+    });
+
+    it('setF_id()', function() {
+        group.f_id = 5;
+        expect(group.f_id).to.equal(5);
+    });
+
+    it('setName()', function() {
+        group.name = 'AndreHummel';
+        expect(group.name).to.equal('AndreHummel');
+    });
+
+    it('setMembers()', function() {
+        group.members = 1;
+        expect(group.members).to.equal(1);
+    });
+
+    it('setMoney()', function() {
+        group.money = 1000;
+        expect(group.money).to.equal(1000);
     });
 });

@@ -1,7 +1,3 @@
-/**
- * Created by andre on 19-4-2017.
- */
-
 var request = require('supertest');
 
 describe('loading express', function () {
