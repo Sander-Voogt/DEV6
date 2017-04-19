@@ -1,5 +1,4 @@
 const Group = require('../routes/group.js');
-require('use-strict');
 
 describe("Test Group Object", function() {
     let group = new Group(1, 'mygroup', 3, 1000);
