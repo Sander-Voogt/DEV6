@@ -27,7 +27,7 @@ describe('Tests Zino: Roulette en Leaderboard', function () {
                 })
                 .catch(function (err) {
                     console.log(err.response.text);
-                    return
+
                 });
         });
 
@@ -42,7 +42,7 @@ describe('Tests Zino: Roulette en Leaderboard', function () {
                 })
                 .catch(function (err) {
                     console.log(err.response.text);
-                    return
+
                 });
         });
     });
