@@ -3,19 +3,18 @@
  */
 
 var app = require('../app.js');
-const Group = require('../group.js');
 
 describe("Test object Group", function() {
-    it('Create an instance without values', function(done) {
+    it('Create an instance without values', function() {
 
     });
-    it('Create an instance with values', function(done) {
+    it('Create an instance with values', function() {
 
     });
-    it('set()', function(done) {
+    it('set()', function() {
 
     });
-    it('get()', function(done) {
+        it('get()', function() {
 
     });
 });

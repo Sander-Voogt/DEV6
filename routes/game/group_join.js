@@ -1,13 +1,16 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 var mysql = require('../../database.js');
 
 // DIT IS DE VERWIJZING NAAR CLASS
 const Group = require('../group.js');
+var array = [];
 
 router.get('/', function (req, res) {
     mysql.mysqlConnection.query('SELECT f_id, name, members, money FROM family', function(err, rows){
-        var array = [];
+
         var username = req.cookies.username;
 
         // DIT IS DE INSTANTIE VAN HET OBJECT
