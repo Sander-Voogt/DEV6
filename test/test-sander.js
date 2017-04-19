@@ -1,6 +1,3 @@
-/**
- * Created by Sander on 06-01-17.
- */
 var supertest = require('supertest');
 var app = require('../app.js');
 var agent = supertest.agent(app);
